@@ -30,10 +30,10 @@ public class UserBC {
 	}
 	
 	@SuppressWarnings("static-access")
-	public User getUser(int id){
+	public User getUser(long l){
 		dao.open();
 		dao.begin();
-		User user = dao.read(id);
+		User user = dao.read(l);
 		dao.commit();
 		dao.close();
 		return user;

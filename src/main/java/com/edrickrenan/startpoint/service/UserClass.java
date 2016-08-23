@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -12,9 +12,9 @@ import javax.ws.rs.core.MediaType;
 import com.edrickrenan.startpoint.bc.UserBC;
 import com.edrickrenan.startpoint.entity.User;
 
-@Path("user")
+@Path("/user")
 public class UserClass {
-	@PUT
+	@POST
 	@Path("/new")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -26,12 +26,11 @@ public class UserClass {
 		} catch (Exception e) {
 			System.out.println("Hello World! ;)");
 			return null;
-		}	
+		}
 	}
 	
 	@GET
 	@Path("/getall")
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<User> getAll(){
 		try {
@@ -45,7 +44,6 @@ public class UserClass {
 	
 	@GET
 	@Path("/get")
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public User newUser(int id){
 		try {
@@ -57,21 +55,7 @@ public class UserClass {
 		}	
 	}
 	
-	@GET
-	@Path("/getall")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> newUser(){
-		try {
-			UserBC bc = new UserBC();
-			List<User> list = bc.getAllUsers();
-			return list;
-		} catch (Exception e) {
-			return null;
-		}	
-	}
-	
-	@GET
+	@POST
 	@Path("/delete")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -85,7 +69,7 @@ public class UserClass {
 		}	
 	}
 	
-	@GET
+	@POST
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

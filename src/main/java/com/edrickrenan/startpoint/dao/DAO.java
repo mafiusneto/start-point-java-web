@@ -30,6 +30,7 @@ public class DAO<T> implements DAOInterface<T> {
 		manager.persist(obj);
 	}
 	public void delete(T obj) {
+		obj = manager.merge(obj);
 		manager.remove(obj);
 	}
 	public T update(T obj){
